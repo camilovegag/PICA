@@ -1,10 +1,13 @@
 const express = require("express");
-const app = express();
-const port = 300;
+const userRoutes = require("./routes/userRoutes");
+require("dotenv").config();
 
-app.get("/", (req, res) => {
-  res.send("Hello PICA!");
-});
+const app = express();
+const port = process.env.DB_PORT || 3000;
+
+app.use(express.json());
+
+app.use("/api/users", userRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
