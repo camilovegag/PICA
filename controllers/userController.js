@@ -14,3 +14,26 @@ exports.createUser = async (req, res) => {
     res.status(500).json({ message: `Error creating user: ${error.message}` });
   }
 };
+
+exports.getUsers = async (_, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM user");
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ message: `Error fetching users: ${error.message}` });
+  }
+};
+
+exports.getUserById = async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM user WHERE id = ?", [
+      req.params.id,
+    ]);
+    if (rows.length === 0) {
+      res.status(404).json({ message: "User not found" });
+    }
+    res.json(rows[0]);
+  } catch (error) {
+    res.status(500).json({ message: `Error fetching user: ${error.message}` });
+  }
+};
