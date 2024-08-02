@@ -1,8 +1,9 @@
 {
   "name": "reto-01",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Reto 01 - PICA",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js"
   },

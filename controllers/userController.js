@@ -1,6 +1,6 @@
-const db = require("../config/database");
+import db from "../config/database";
 
-exports.createUser = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const { email, nombre, apellido, fecha } = req.body;
     const [result] = await db.query(
@@ -15,7 +15,7 @@ exports.createUser = async (req, res) => {
   }
 };
 
-exports.getUsers = async (_, res) => {
+export const getUsers = async (_, res) => {
   try {
     const [rows] = await db.query("SELECT * FROM user");
     res.json(rows);
@@ -24,7 +24,7 @@ exports.getUsers = async (_, res) => {
   }
 };
 
-exports.getUserById = async (req, res) => {
+export const getUserById = async (req, res) => {
   try {
     const [rows] = await db.query("SELECT * FROM user WHERE id = ?", [
       req.params.id,
