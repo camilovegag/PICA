@@ -1,5 +1,5 @@
-import db from "../config/database";
-import logger from "../utils/logger";
+import db from "../config/database.js";
+import logger from "../utils/logger.js";
 
 export const createUser = async (req, res) => {
   try {
