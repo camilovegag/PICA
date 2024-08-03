@@ -48,10 +48,10 @@ export const getUserById = async (req, res) => {
       res.status(404).json({ message: "User not found" });
     }
 
-    logger.info(`Fetched user with id ${req.params.id}`);
+    logger.info(`Fetched user with id: ${req.params.id}`);
     res.json(rows[0]);
   } catch (error) {
-    logger.error(`Error fetching user with id ${req.params.id} ${error}`);
+    logger.error(`Error fetching user with id: ${req.params.id} ${error}`);
     res.status(500).json({ message: `Error fetching user: ${error.message}` });
   }
 };
