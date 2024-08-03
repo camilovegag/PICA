@@ -19,7 +19,7 @@ app.use((req, _, next) => {
 app.use("/api/users", userRoutes);
 
 // Error handling middleware
-app.use((err, _, res, next) => {
+app.use((err, _, res, __) => {
   logger.error(err.stack);
   res.status(500).send("Something broke!");
 });
