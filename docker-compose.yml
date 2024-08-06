@@ -1,0 +1,21 @@
+services:
+  mysql_db:
+    image: mysql:5.7
+    platform: linux/x86_64
+    container_name: mysql_express_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: myappuser
+      MYSQL_PASSWORD: myapppassword
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - express_app_network
+
+networks:
+  express_app_network:
+    driver: bridge
