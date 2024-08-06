@@ -1,13 +1,26 @@
 services:
+
+  node_app:
+    build: .
+    container_name: node_express_app
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+    ports:
+      - ${PORT}:3000"
+
   mysql_db:
     image: mysql:5.7
     platform: linux/x86_64
     container_name: mysql_express_db
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: myapp
-      MYSQL_USER: myappuser
-      MYSQL_PASSWORD: myapppassword
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     restart: unless-stopped
