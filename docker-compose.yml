@@ -11,6 +11,10 @@ services:
       DB_PORT: ${DB_PORT}
     ports:
       - "${PORT}:3000"
+    depends_on:
+      - mysql_db
+    networks:
+      - express_app_network
 
   mysql_db:
     image: mysql:5.7
