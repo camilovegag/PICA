@@ -10,7 +10,7 @@ services:
       DB_NAME: ${DB_NAME}
       DB_PORT: ${DB_PORT}
     ports:
-      - ${PORT}:3000"
+      - "${PORT}:3000"
 
   mysql_db:
     image: mysql:5.7
