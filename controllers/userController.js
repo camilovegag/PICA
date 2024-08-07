@@ -5,20 +5,18 @@ export const updateUser = async (req, res) => {
   try {
     const { email, nombre, apellido, fecha } = req.body;
 
-    if (!email || !nombre || !apellido) {
-      logger.warn("Attempt to update user with missing fields");
-      return res
-        .status(400)
-        .json({ message: "Email, nombre, and apellido are required" });
+    if (!email && !nombre && !apellido) {
+      logger.warn("Attempt to update user with no fields provided");
+      return res.status(400).json({ message: "No update fields provided" });
     }
 
     // COALESCE: function in SQL, which returns the first non-null value in the list.
     const [result] = await db.query(
       `UPDATE user SET 
-        email = COALESCE(?, current_email),
-        nombre = COALESCE(?, current_nombre),
-        apellido = COALESCE(?, current_apellido),
-        fecha = COALESCE(?, current_fecha)
+        email = COALESCE(?, email),
+        nombre = COALESCE(?, nombre),
+        apellido = COALESCE(?, apellido),
+        fecha = COALESCE(?, fecha)
       WHERE id = ?`,
       [email, nombre, apellido, fecha, req.params.id]
     );
