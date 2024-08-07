@@ -29,10 +29,9 @@ export const updateUser = async (req, res) => {
     }
 
     logger.info(`Updated user with id: ${req.params.id}`);
-
     res
       .status(200)
-      .json({ id: result.insertId, message: "User updated succesfully" });
+      .json({ id: req.params.id, message: "User updated succesfully" });
   } catch (error) {
     logger.error(`Error updating user: ${error}`);
     res.status(500).json({ message: `Error updating user: ${error}` });
