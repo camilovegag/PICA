@@ -64,7 +64,7 @@ docker logs -f node_express_app
 
 
 ### Obtener Usuarios
-- Método: GET
+- Método: `GET`
 - Ruta: `/api/users`
 
 ##### Respuesta:
@@ -88,7 +88,7 @@ docker logs -f node_express_app
 ```
 
 ### Obtener Usuario por ID
-- Método: GET
+- Método: `GET`
 - Ruta: `/api/users/:id`
 - Parámetros de URL: `id` (ID del usuario)
 
@@ -105,7 +105,7 @@ docker logs -f node_express_app
 
 ### Crear Usuario
 
-- Método: POST
+- Método: `POST`
 - Ruta: `/api/users`
 #####  Cuerpo de la Solicitud:
 
@@ -123,6 +123,31 @@ docker logs -f node_express_app
 {
   "id": 1,
   "message": "User created successfully"
+}
+```
+
+### Actualizar Usuario
+
+- Método: `PUT`
+- Ruta: `/api/users/:id`
+- Parámetros de URL: `id` (ID del usuario)
+
+#####  Cuerpo de la Solicitud:
+JSON con los campos a actualizar. Todos los campos son opcionales.
+```json
+{
+  "email": "usuario@example.com",
+  "nombre": "Nombre",
+  "apellido": "Apellido",
+  "fecha": "YYYY-MM-DD"
+}
+```
+##### Respuesta:
+
+```json
+{
+  "id": 1,
+  "message": "User updated successfully"
 }
 ```
 
