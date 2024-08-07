@@ -1,6 +1,44 @@
 import db from "../config/database.js";
 import logger from "../utils/logger.js";
 
+export const updateUser = async (req, res) => {
+  try {
+    const { email, nombre, apellido, fecha } = req.body;
+
+    if (!email || !nombre || !apellido) {
+      logger.warn("Attempt to update user with missing fields");
+      return res
+        .status(400)
+        .json({ message: "Email, nombre, and apellido are required" });
+    }
+
+    // COALESCE: function in SQL, which returns the first non-null value in the list.
+    const [result] = await db.query(
+      `UPDATE user SET 
+        email = COALESCE(?, current_email),
+        nombre = COALESCE(?, current_nombre),
+        apellido = COALESCE(?, current_apellido),
+        fecha = COALESCE(?, current_fecha)
+      WHERE id = ?`,
+      [email, nombre, apellido, fecha, req.params.id]
+    );
+
+    if (result.affectedRows === 0) {
+      logger.warn(`User with id: ${req.params.id} not found for update`);
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    logger.info(`Updated user with id: ${req.params.id}`);
+
+    res
+      .status(200)
+      .json({ id: result.insertId, message: "User updated succesfully" });
+  } catch (error) {
+    logger.error(`Error updating user: ${error}`);
+    res.status(500).json({ message: `Error updating user: ${error}` });
+  }
+};
+
 export const createUser = async (req, res) => {
   try {
     const { email, nombre, apellido, fecha } = req.body;
