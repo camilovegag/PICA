@@ -1,21 +1,21 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2024-08-06T03:27:39.577Z",
+  "__export_date": "2024-08-07T18:03:26.878Z",
   "__export_source": "insomnia.desktop.app:v9.3.3",
   "resources": [
     {
-      "_id": "req_6a8b8647c35547b6ac4d15d71d78f0e6",
+      "_id": "req_bbf30c3c50c64da58568143a3a8c1604",
       "parentId": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
-      "modified": 1722912230758,
-      "created": 1722911422351,
-      "url": "localhost:3000/api/users",
-      "name": "POST user",
+      "modified": 1723052173956,
+      "created": 1723045103863,
+      "url": "http://localhost:3000/api/users/1",
+      "name": "PUT user",
       "description": "",
-      "method": "POST",
+      "method": "PUT",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"brayan@example.com\",\n\t\"nombre\": \"Brayan\",\n\t\"apellido\": \"Angarita\",\n\t\"fecha\": \"2024-08-05\"\n}"
+        "text": "{\n  \"email\": \"jane.doe@email.com\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -23,7 +23,7 @@
         { "name": "User-Agent", "value": "insomnia/9.3.3" }
       ],
       "authentication": {},
-      "metaSortKey": -1722911422351,
+      "metaSortKey": -1723045103863,
       "isPrivate": false,
       "pathParameters": [],
       "settingStoreCookies": true,
@@ -37,7 +37,7 @@
     {
       "_id": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
       "parentId": null,
-      "modified": 1722911297547,
+      "modified": 1722489065420,
       "created": 1722489065420,
       "name": "Reto 01 PICA",
       "description": "",
@@ -45,19 +45,25 @@
       "_type": "workspace"
     },
     {
-      "_id": "req_9f2924d0d1c24942a29bc290cf7a8bac",
+      "_id": "req_9b47aab918b7478787dcf835540b5b8d",
       "parentId": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
-      "modified": 1722912803875,
-      "created": 1722911343848,
-      "url": "http://localhost:3000/api/users/2",
-      "name": "GET userById",
+      "modified": 1723052123886,
+      "created": 1722491834136,
+      "url": "http://localhost:3000/api/users",
+      "name": "POST user",
       "description": "",
-      "method": "GET",
-      "body": {},
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"john.doe@email.com\",\n  \"nombre\": \"John\",\n  \"apellido\": \"Doe\",\n  \"fecha\": \"2024-08-07\"\n}"
+      },
       "parameters": [],
-      "headers": [{ "name": "User-Agent", "value": "insomnia/9.3.3" }],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/9.3.3" }
+      ],
       "authentication": {},
-      "metaSortKey": -1722911343848,
+      "metaSortKey": -1722491834136,
       "isPrivate": false,
       "pathParameters": [],
       "settingStoreCookies": true,
@@ -69,11 +75,35 @@
       "_type": "request"
     },
     {
-      "_id": "req_1f1754d716cb4e34931166e8040a0d8c",
+      "_id": "req_90ab1fa89f5845ef8f811fceb4f6dfba",
       "parentId": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
-      "modified": 1722911402280,
-      "created": 1722911317664,
-      "url": "localhost:3000/api/users",
+      "modified": 1723052140489,
+      "created": 1722491793802,
+      "url": "http://localhost:3000/api/users/2",
+      "name": "GET user by id",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/9.3.3" }],
+      "authentication": {},
+      "metaSortKey": -1722491793802,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c6cbd52c72ce4ab198593145c9e5ac70",
+      "parentId": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
+      "modified": 1722491781987,
+      "created": 1722489072831,
+      "url": "http://localhost:3000/api/users",
       "name": "GET users",
       "description": "",
       "method": "GET",
@@ -81,7 +111,7 @@
       "parameters": [],
       "headers": [{ "name": "User-Agent", "value": "insomnia/9.3.3" }],
       "authentication": {},
-      "metaSortKey": -1722911317664,
+      "metaSortKey": -1722489072831,
       "isPrivate": false,
       "pathParameters": [],
       "settingStoreCookies": true,
@@ -95,7 +125,7 @@
     {
       "_id": "env_ab0f4d55a7ef61d3228faa37044905145e0070a5",
       "parentId": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
-      "modified": 1722911297546,
+      "modified": 1722489065423,
       "created": 1722489065423,
       "name": "Base Environment",
       "data": {},
@@ -108,8 +138,8 @@
     {
       "_id": "jar_ab0f4d55a7ef61d3228faa37044905145e0070a5",
       "parentId": "wrk_feab23bb8eaa4acc8cf6b07c29622a6a",
-      "modified": 1722911297638,
-      "created": 1722911297638,
+      "modified": 1722489065424,
+      "created": 1722489065424,
       "name": "Default Jar",
       "cookies": [],
       "_type": "cookie_jar"
